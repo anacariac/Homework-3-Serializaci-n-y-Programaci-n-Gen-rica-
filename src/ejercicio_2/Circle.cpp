@@ -13,7 +13,7 @@ void Circle::set_position(const Point& newP) {position = newP;}
 void Circle::set_ratio(double r){ratio = r;}
 
 void Circle::showCircle(){
-    cout<<"Position: ";
+    cout<<"\nPosition: ";
     position.showPoint();
     cout<<"\nRatio: "<< ratio<<endl;
 }

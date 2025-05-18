@@ -13,5 +13,5 @@ void Point::set_X(double newX){x = newX;}
 void Point::set_Y(double newY){y = newY;}
 
 void Point::showPoint(){
-    cout<<'('<< x <<", "<< y <<')'<<endl; 
+    cout<<'('<< x <<", "<< y <<')'; 
 }

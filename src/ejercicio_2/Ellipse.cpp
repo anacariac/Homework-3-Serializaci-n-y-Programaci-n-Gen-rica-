@@ -17,8 +17,8 @@ void Ellipse::set_SemiMajorAxis(double a){A = a;}
 void Ellipse::set_MinorSemiAxis(double b){B = b;}
 
 void Ellipse::showEllipse(){
-    cout<<"Position: ";
+    cout<<"\nPosition: ";
     position.showPoint();
-    cout<<"\nSemi-major axis: "<< A <<endl;
+    cout<<"\nSemi-major axis: "<< A;
     cout<<"\nMinor Semiaxis: "<< B <<endl;
 }

@@ -17,8 +17,8 @@ void Rectangle::set_width(double w){width = w;}
 void Rectangle::set_length(double l){length = l;}
 
 void Rectangle::showRectangle(){
-    cout<<"Left Vertex: ";
+    cout<<"\nLeft Vertex: ";
     LeftVertex.showPoint();
-    cout<<"\nWidth: "<< width <<endl;
+    cout<<"\nWidth: "<< width;
     cout<<"\nLength: "<< length <<endl;
 }
