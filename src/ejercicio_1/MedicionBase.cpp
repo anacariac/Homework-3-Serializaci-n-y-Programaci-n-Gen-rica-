@@ -15,7 +15,7 @@ MedicionBase& MedicionBase::operator=(const MedicionBase& other){
 float MedicionBase::getTiempo(){return *tiempoMedicion;}
 
 void MedicionBase::serializar(ofstream& out) const{
-    out.write(reinterpret_cast<const char*>(tiempoMedicion.get()),sizeof(float)); // con .get() doy el raw pointer para poder reinterpretarlo
+    out.write(reinterpret_cast<const char*>(tiempoMedicion.get()),sizeof(float)); // con .get() devuelvo el raw pointer para poder reinterpretarlo
 };
 
 void MedicionBase::deserializar(ifstream& in){
