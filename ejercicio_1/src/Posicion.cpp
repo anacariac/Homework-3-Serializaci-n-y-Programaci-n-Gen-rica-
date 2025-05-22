@@ -1,7 +1,19 @@
 #include "Posicion.hpp"
 using namespace std;
 
-Posicion::Posicion(float lat, float lon, float alt, float t): latitud(lat), longitud(lon), altitud(alt), MedicionBase(t) {}
+Posicion::Posicion(float lat, float lon, float alt, float t):  MedicionBase(t), latitud(lat), longitud(lon), altitud(alt) {}
+
+Posicion::Posicion(const Posicion& other): MedicionBase(*other.tiempoMedicion), latitud(other.latitud) , longitud(other.longitud), altitud(other.altitud) {}
+
+Posicion& Posicion::operator=(const Posicion& other){
+    if(this != &other){
+        this->latitud = other.latitud;
+        this->longitud = other.longitud;
+        this->altitud = other.altitud;
+        this->tiempoMedicion = make_unique<float>(*other.tiempoMedicion);
+    }
+    return *this;
+}
 
 void Posicion::serializar(ofstream& out) const{
     MedicionBase::serializar(out);

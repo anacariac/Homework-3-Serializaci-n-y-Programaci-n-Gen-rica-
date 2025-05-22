@@ -11,6 +11,7 @@ protected:
 
 public:
     //CONSTRUCTOR
+    MedicionBase() = default;
     MedicionBase(float t);
     //METODOS PARA PODER COPIAR EL PUNTERO
     MedicionBase(const MedicionBase& other); //CONSTRUCTOR DE COPIA

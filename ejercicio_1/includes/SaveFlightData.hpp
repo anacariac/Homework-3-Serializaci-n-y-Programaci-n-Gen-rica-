@@ -6,12 +6,12 @@
 using namespace std;
 
 class SaveFlightData{
-private:
+public: 
+    //ATRIBUTOS
     Posicion posicion;
     Presion presion;
-
-public: 
     //CONSTRUCTOR
+    SaveFlightData() = default;
     SaveFlightData(const Posicion& p, const Presion& q);
     //SERIALIZACION
     void serializar(ofstream& out) const;

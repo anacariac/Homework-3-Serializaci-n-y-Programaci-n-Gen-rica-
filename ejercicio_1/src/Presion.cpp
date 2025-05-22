@@ -1,7 +1,18 @@
 #include "Presion.hpp"
 using namespace std;
 
-Presion::Presion(float p, float q, float t): presionEstatica(p), presionDinamica(q), MedicionBase(t) {}
+Presion::Presion(float p, float q, float t):  MedicionBase(t), presionEstatica(p), presionDinamica(q) {}
+
+Presion::Presion(const Presion& other): MedicionBase(*other.tiempoMedicion), presionEstatica(other.presionEstatica), presionDinamica(other.presionDinamica) {}
+
+Presion& Presion::operator=(const Presion& other){
+    if(this != &other){
+        this->presionEstatica = other.presionEstatica;
+        this->presionDinamica = other.presionDinamica;
+        this->tiempoMedicion = make_unique<float>(*other.tiempoMedicion);
+    }
+    return *this;
+}
 
 void Presion::serializar(ofstream& out) const{
     MedicionBase::serializar(out);
