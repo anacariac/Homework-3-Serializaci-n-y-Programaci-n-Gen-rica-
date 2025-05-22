@@ -1,51 +1,61 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include <sstream>
 #include <string>
 #include <type_traits>
 using namespace std;
 
+template<typename T>
 class DataGenerator{
 private:
-    vector<double> vec_doubles;
-    vector<string> palabras;
-    vector<vector<int>> listas;
+    vector<T> vec_data;
 
 public:
-    template<typename T>
     void addData(const T& data){
+        vec_data.push_back(data);
+    }
+
+    string toJSON(){
         if constexpr(is_same_v<T, double>){
-            vec_doubles.push_back(data);
+            ostringstream oss;
+            oss << " \"vec_doubles\": [";
+            for (size_t i = 0; i < vec_data.size(); i++) {
+                oss << vec_data[i];
+                if (i < vec_data.size() - 1) oss << ", ";
+            }
+            oss << "]";
+            return oss.str();
         }
         else if constexpr(is_same_v<T, string>){
-            palabras.push_back(data);
+            ostringstream oss;
+            oss << "  \"palabras\": [";
+            for (size_t i = 0; i < vec_data.size(); i++) {
+                oss << "\"" << vec_data[i] << "\"";
+                if (i < vec_data.size() - 1) oss << ", ";
+            }
+            oss << "]";
+            return oss.str();
         }
         else if constexpr(is_same_v<T, vector<int>>){
-            listas.push_back(data);
+            ostringstream oss;
+            oss << "  \"listas\": [";
+            for (size_t i = 0; i < vec_data.size(); i++) {
+                oss << "\n\t [";
+                for (size_t j = 0; j < vec_data[i].size(); j++) {
+                    oss << vec_data[i][j];
+                    if (j < vec_data[i].size() - 1) oss << ", ";
+                }
+                oss << "]";
+                if (i < vec_data.size() - 1) oss << ", ";
+            }
+            oss << "\n\t]";
+            return oss.str();
         }
-        else{
-            static_assert(!is_same_v<T, T>, "Tipo no aceptable");
+        else {
+            static_assert(!is_same_v<T, T>, "Tipo no soportado");
+            return "";
         }
     }
 
-    template<typename T>
-    string getLabel(const T& data){
-        if constexpr(is_same_v<T, double>){
-            return "vec_doubles";
-        }
-        else if constexpr(is_same_v<T, string>){
-            return "palabras";
-        }
-        else if constexpr(is_same_v<T, vector<int>>){
-            return "listas";
-        }
-        else{
-            static_assert(!is_same_v<T, T>, "Tipo no aceptable");
-        }
-    }
-
-    //GETTERS
-    const vector<double>& getVecDoubles();
-    const vector<string>& getPalabras();
-    const vector<vector<int>>& getListas();
 };
