@@ -30,16 +30,11 @@ int main() {
         cout << "\nÁrea del círculo: " << area_circle << endl;
         cout << "Área de la elipse: " << area_ellipse << endl;
         cout << "Área del rectángulo: " << area_rectangle << endl;
+        
     }catch(const invalid_argument& e){
         cerr<<"Error al crear figura: "<<e.what()<<endl;
         return 1;
     }
-    /* 
-    Point p(2.0, 0.0);
-    p.showPoint();
-    double area_point = ProcesadorFigura<Point>::calcular_area(p); // ERROR DE COMPILACIÓN
-    cout << "Área del punto: " << area_point << endl;
-    */
 
     cout<<"\nFin del programa!"<<endl;
 
