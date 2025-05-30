@@ -5,7 +5,7 @@ Este ejericicio tiene en cuenta un diagrama UML, el cual contiene una interfaz d
 
 ## **Implementación**
 - `IMediciones`: Interfaz con métodos de serialización virtuales puro.
-- `MedicionBase`: Clase abstracta que permite guardar como atributo el tiempo ed medición como un *unique_ptr*. En esta clase ya se empezó a trabajar sin `move`, de esta manera se sobreescribió el operador `=` y un constructor de deep copy.
+- `MedicionBase`: Clase abstracta que permite guardar como atributo el tiempo de medición como un *unique_ptr*. En esta clase ya se empezó a trabajar sin `move`, de esta manera se sobreescribió el operador `=` y un constructor de deep copy.
 - `Posicion`: Clase derivada de `MedicionBase`, la cual tiene como atributos la longitud, la latitud y la altitud; es construida con un tiempo que llama al constructor de `MedicionBase`. También opera de manera distinta para no utilizar `move`.
 - `Presion`: Clase derivada de `MedicionBase`, la cual tiene como atributos una presión estática y otra dinámica; opera similarmente que la clase `Posicion` a la hora de no utilizar el `move`.
 - `SaveFlightData`: Clase que tiene como atributos una posición y una presión, haciendo uso de la **Agregación**.
