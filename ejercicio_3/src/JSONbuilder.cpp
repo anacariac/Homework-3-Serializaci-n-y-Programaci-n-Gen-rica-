@@ -15,5 +15,5 @@ void JSONbuilder::buildJSON(ostream& out){
 }
 
 void JSONbuilder::showJSON(){
-    buildJSON(cout);
+    buildJSON(cout); // llama al metodo buildJSON ya que le paso como argumento cout que permite imprimir por pantalla el JSON si es que no quiero escribir un archivo
 }
