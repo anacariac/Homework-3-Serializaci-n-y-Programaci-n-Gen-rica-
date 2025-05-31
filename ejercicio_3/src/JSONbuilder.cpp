@@ -6,7 +6,7 @@ void JSONbuilder::buildJSON(ostream& out){
     out<<'{';
     for(size_t i = 0; i < processedData.size(); i++){
         out<< processedData[i];
-        if(i < processedData.size()){
+        if(i < processedData.size() - 1){
             out<<',';
         }
         out<<"\n";
